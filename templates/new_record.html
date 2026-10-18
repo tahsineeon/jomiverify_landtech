@@ -1,0 +1,15 @@
+{% extends "base.html" %}{% block title %}Digitize record{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">RECORD INTAKE</div><h1>Digitize a record</h1><p class="muted">Enter the details from a source document. A demo ID and verification code will be generated.</p></div><a class="text-link" href="{{ url_for('records') }}">← Back to records</a></div>
+<div class="form-layout"><form class="form-card" method="post">
+ <div class="form-section-title"><span>01</span><div><strong>Owner & location</strong><small>Required fields marked with *</small></div></div>
+ <div class="form-grid">
+ {% for key,label,placeholder in [('owner_name','Owner / applicant name *','Name as written in source'),('district','District *','e.g. Sirajganj'),('upazila','Upazila *','e.g. Tarash'),('mouza','Mouza *','Mouza / village name'),('khatian_no','Khatian number *','Enter khatian number'),('dag_no','Dag number *','Enter dag / plot number')] %}
+ <label>{{ label }}<input name="{{ key }}" required value="{{ form.get(key,'') }}" placeholder="{{ placeholder }}"></label>
+ {% endfor %}
+ </div>
+ <div class="form-section-title section-gap"><span>02</span><div><strong>Land details</strong><small>Keep the source document nearby</small></div></div>
+ <div class="form-grid"><label>Land area *<input name="land_area" required value="{{ form.get('land_area','') }}" placeholder="e.g. 12.50"></label><label>Unit<select name="land_unit"><option value="decimal">Decimal</option><option value="acre">Acre</option><option value="hectare">Hectare</option><option value="katha">Katha</option></select></label><label class="full">Record type<select name="record_type"><option>Khatian entry</option><option>Mutation entry</option><option>Survey entry</option><option>Other / needs review</option></select></label><label class="full">Notes<textarea name="notes" rows="3" placeholder="Source reference or review note. Do not enter sensitive personal data.">{{ form.get('notes','') }}</textarea></label></div>
+ <div class="form-warning">⚑ Demo only: do not enter real citizens' personal data or use this as an official registry.</div><button class="button primary submit-button" type="submit">Create demo record <span>↗</span></button>
+ </form><aside class="side-card"><div class="side-icon">✳</div><h3>Built-in checks</h3><div class="side-feature"><b>01</b><div><strong>Duplicate screening</strong><p>Checks district, upazila, mouza, khatian and dag before creating a record.</p></div></div><div class="side-feature"><b>02</b><div><strong>Unique record ID</strong><p>Generates a demo ID and one-time-looking verification code.</p></div></div><div class="side-feature"><b>03</b><div><strong>Integrity fingerprint</strong><p>Stores a SHA-256 hash of key fields to detect later changes.</p></div></div></aside></div>
+{% endblock %}

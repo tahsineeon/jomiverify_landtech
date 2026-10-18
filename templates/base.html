@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}JomiVerify{% endblock %} · LandTech</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">J</span><span>Jomi<span class="brand-light">Verify</span><small>LAND RECORDS · DEMO</small></span></a>
+  <nav><a href="{{ url_for('index') }}">Overview</a><a href="{{ url_for('records') }}">Records</a><a href="{{ url_for('verify') }}">Verify</a><a href="{{ url_for('audit') }}">Audit trail</a></nav>
+  <a class="nav-cta" href="{{ url_for('new_record') }}">+ Add record</a>
+</header>
+<main class="container">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+  <footer><span>JomiVerify · LandTech Hackathon prototype</span><span>Demo data only · Not an official government service</span></footer>
+</main>
+</body>
+</html>

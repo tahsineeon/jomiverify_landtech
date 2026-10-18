@@ -1,0 +1,28 @@
+LANDTECH HACKATHON SUBMISSION — COPY INTO THE FORM
+
+Include our project in the public showcase: YES
+
+TITLE
+JomiVerify — A Lightweight Land Record Digitization & Integrity Checker
+
+ABSTRACT
+JomiVerify is a simple digital register prototype that turns land-record details into searchable structured entries, flags possible duplicate plot references, and checks record integrity using a verification code and SHA-256 fingerprint. Built as a feasible hackathon MVP with synthetic data, it demonstrates a traceable workflow without claiming to replace official land records or legal verification.
+
+THE PROBLEM
+Paper-based or scattered land-record entries can be difficult to search, compare and cross-check, while repeated plot references may go unnoticed during manual data entry. We have not independently measured this problem yet, so this submission presents it as a problem hypothesis to validate with land-office staff and citizens rather than claiming unsupported statistics.
+
+YOUR SOLUTION
+An operator enters a record into a structured register. Before saving, the system checks whether the same district, upazila, mouza, khatian number and dag number already exist and flags a possible duplicate for review. Each saved entry receives a unique demo record ID, a verification code and a SHA-256 fingerprint of key fields. A reviewer can enter the ID and code to check the code match and whether the current fields still match the saved fingerprint; creation and verification attempts are added to a basic audit log. The prototype uses fictional data and does not determine legal ownership.
+
+TECH STACK
+Python 3, Flask, SQLite, HTML5, CSS3, Jinja2 templates, SHA-256 hashing (Python hashlib). Runs locally; no paid API or cloud service is required.
+
+DATA SOURCES
+Synthetic, fictional sample records created for this prototype. No real citizen data and no official government records are used. Future development would require authorized access to validated land records and consultation with relevant land administration experts.
+
+LINKS
+Repository: Leave blank until the project is uploaded to a Git repository.
+Demo video: Leave blank until recorded.
+Slide deck: Leave blank until created.
+Live prototype: Local demo at http://127.0.0.1:5000 after running the app; this is not publicly accessible.
+Concept note (PDF): Leave blank unless a PDF is prepared.
